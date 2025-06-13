@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UsuarioService {
 
-    public UsuarioRepository repository;
+    private UsuarioRepository repository;
 
     public Usuario cadastrar(Usuario usuario){
         log.info("Iniciando cadastro. Usuario: {}", usuario.toString());
