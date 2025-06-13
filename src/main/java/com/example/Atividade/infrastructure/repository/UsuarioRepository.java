@@ -1,4 +1,4 @@
-package com.example.Atividade.infrastructure.repositories;
+package com.example.Atividade.infrastructure.repository;
 
 import com.example.Atividade.infrastructure.entity.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

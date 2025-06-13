@@ -1,7 +1,7 @@
 package com.example.Atividade.service;
 
 import com.example.Atividade.domain.Usuario;
-import com.example.Atividade.infrastructure.repositories.UsuarioRepository;
+import com.example.Atividade.infrastructure.repository.UsuarioRepository;
 import com.example.Atividade.mapper.UsuarioMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
