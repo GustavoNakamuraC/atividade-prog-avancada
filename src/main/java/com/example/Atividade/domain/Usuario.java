@@ -13,4 +13,9 @@ public class Usuario {
     private String email;
     private String senha;
     private Role role;
+
+    public void alterarDados(Usuario usuarioNovo){
+        this.nome = usuarioNovo.getNome();
+        this.email = usuarioNovo.getEmail();
+    }
 }

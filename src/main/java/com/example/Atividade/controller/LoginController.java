@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/login")
 @RequiredArgsConstructor
 public class LoginController {
 
@@ -23,7 +23,7 @@ public class LoginController {
     private final TokenGenerator gerador;
     private final UserDetailsServiceImpl userDetailsService;
 
-    @PostMapping("/login")
+    @PostMapping
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken authToken =
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getSenha());
