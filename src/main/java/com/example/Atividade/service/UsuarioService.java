@@ -6,6 +6,7 @@ import com.example.Atividade.infrastructure.repository.UsuarioRepository;
 import com.example.Atividade.mapper.UsuarioMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +17,14 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UsuarioService {
 
+    private PasswordEncoder passwordEncoder;
     private UsuarioRepository repository;
 
     public Usuario cadastrar(Usuario usuario){
         log.info("Iniciando cadastro. Usuario: {}", usuario.toString());
+
+        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
 
         Usuario usuarioSalvo = UsuarioMapper.entityParaDomain(
                 repository.save(UsuarioMapper.domainParaEntity(usuario)));
@@ -32,7 +37,7 @@ public class UsuarioService {
     public List<Usuario> listarTodos() {
         log.info("Iniciando processo de listar todos os usuario.");
 
-        List<Usuario> usuarioList = repository.findAll().stream().map(UsuarioMapper::entityParaDomain).toList();
+        List<Usuario> usuarioList = repository.findAllByRoleUser().stream().map(UsuarioMapper::entityParaDomain).toList();
 
         log.info("Listagem finalizada. Listagem: {}", usuarioList);
         return usuarioList;

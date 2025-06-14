@@ -12,6 +12,7 @@ public class UsuarioMapper {
                 .email(dto.getEmail())
                 .nome(dto.getNome())
                 .senha(dto.getSenha())
+                .role(dto.getRole())
                 .build();
     }
 
@@ -21,6 +22,7 @@ public class UsuarioMapper {
                 .email(domain.getEmail())
                 .nome(domain.getNome())
                 .senha(domain.getSenha())
+                .role(domain.getRole())
                 .build();
     }
 
@@ -30,6 +32,7 @@ public class UsuarioMapper {
                 .email(domain.getEmail())
                 .nome(domain.getNome())
                 .senha(domain.getSenha())
+                .role(domain.getRole())
                 .build();
     }
 
@@ -39,6 +42,7 @@ public class UsuarioMapper {
                 .email(entity.getEmail())
                 .nome(entity.getNome())
                 .senha(entity.getSenha())
+                .role(entity.getRole())
                 .build();
     }
 }
