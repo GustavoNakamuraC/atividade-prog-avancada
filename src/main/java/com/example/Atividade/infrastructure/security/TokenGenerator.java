@@ -1,7 +1,11 @@
 package com.example.Atividade.infrastructure.security;
 
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import io.jsonwebtoken.Jwts;
+
+import java.util.Date;
 
 @Component
 public class TokenGenerator {
@@ -18,13 +22,13 @@ public class TokenGenerator {
                 .compact();
     }
 
-    public String extrairEmail(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
-    }
-
     public boolean tokenValido(String token, UserDetails userDetails) {
         String email = extrairEmail(token);
         return email.equals(userDetails.getUsername()) && !tokenExpirado(token);
+    }
+
+    public String extrairEmail(String token) {
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
     private boolean tokenExpirado(String token) {
